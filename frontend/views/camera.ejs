@@ -40,16 +40,16 @@
     </div>
     <div class="container col-md-5">
         <div class="mb-4">
-            <input class="form-control mb-4" type="file" id="formFile" onchange="preview()">
-            <img id="frame" src="" class="img-fluid" />
+            <form id="image-form" action="<%= url_for('post_img') %>" method="POST" enctype="multipart/form-data">
+                <input class="form-control mb-4" type="file" id="formFile" name="images" onchange="preview()">
+                <img id="frame" src="" class="img-fluid" />
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary mt-3">อัพโหลดรูปภาพ</button>
+                </div>
+            </form>
         </div>
     </div>
-
-    <div class="container col-2">
-        <button onclick="sentImg()" class="btn btn-primary">อัพโหลดรูปภาพ</button>
-        <!-- <button onclick="clearImage()" class="btn btn-primary mt-3">Click me</button> -->
-    </div>
-
+    
     <script>
         function preview() {
             frame.src = URL.createObjectURL(event.target.files[0]);

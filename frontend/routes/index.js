@@ -115,4 +115,31 @@ router.get("/camera", async function (req, res, next) {
     }
 });
 
+router.post('/post_img', async (req, res) => {
+    const connection = await mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: 'RKIhlx67',
+        database: 'devtool'
+    });
+
+    try {
+        const requestImages = req.files.images;
+        console.log(requestImages);
+        const image = requestImages[0].buffer;
+
+        // Insert the image data into the database
+        const nowStr = new Date().toISOString().slice(0, 19).replace('T', ' ');
+        const query = 'INSERT INTO mission (date_time, camera_name, img, status, name) VALUES (?, ?, ?, null, ?)';
+        const [rows] = await connection.execute(query, [nowStr, 'กล้องตัวที่ 1', image, 'izacc']);
+
+        res.render('camera');
+    } catch (e) {
+        console.log(e);
+        res.render('camera');
+    } finally {
+        connection.end();
+    }
+});
+
 exports.router = router
