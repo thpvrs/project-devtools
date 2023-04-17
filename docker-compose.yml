@@ -1,0 +1,29 @@
+version: "3"
+services:
+  app:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./web:/app
+    environment:
+      - NODE_ENV=development
+    command: npm run serve
+    depends_on:
+      - db
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: RKIhlx67
+      MYSQL_DATABASE: devtool
+      # MYSQL_USER: root
+      MYSQL_PASSWORD: RKIhlx67
+    ports:
+      - "3306:3306"
+    volumes:
+      - "./Devtool.sql:/docker-entrypoint-initdb.d/Devtool.sql"
+volumes:
+  db-data:
