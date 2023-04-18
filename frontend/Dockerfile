@@ -1,8 +1,6 @@
-# Use an official Node.js runtime as a parent image
-FROM node:latest
-
-# Set the working directory to /app
-WORKDIR /app
+# Create app directory
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 
 # Copy the package.json and package-lock.json files to the container
 COPY package*.json ./
