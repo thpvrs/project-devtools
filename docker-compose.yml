@@ -4,6 +4,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+      image: it63070105/green-points-backend:1.0
     ports:
       - "3000:3000"
     volumes:
