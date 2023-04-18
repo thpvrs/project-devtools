@@ -40,7 +40,7 @@ pipeline {
             steps {
                 echo "Trigger : calling Slave job . . ."
                 bat 'echo "HELLO ${DOCKERHUB_CREDENTIALS_USR}"'
-                build job: 'child', parameters: [string(name: 'DOCKERHUB_CREDENTIALS_USR', value: env.DOCKERHUB_CREDENTIALS_USR), string(name: 'DOCKERHUB_CREDENTIALS_PSW', value: env.DOCKERHUB_CREDENTIALS_PSW)]
+                build job: 'slave', parameters: [string(name: 'DOCKERHUB_CREDENTIALS_USR', value: env.DOCKERHUB_CREDENTIALS_USR), string(name: 'DOCKERHUB_CREDENTIALS_PSW', value: env.DOCKERHUB_CREDENTIALS_PSW)]
             }
         }
     }
