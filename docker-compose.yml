@@ -25,5 +25,5 @@ services:
       - "3306:3306"
     volumes:
       - "./Devtool.sql:/docker-entrypoint-initdb.d/Devtool.sql"
-volumes:
+# volumes:
   # db-data:
