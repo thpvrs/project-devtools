@@ -17,7 +17,7 @@
       }
       .header {
         background-color: #ffa1a1;
-        height: 50px;
+        height: 100px;
       }
       .textbox {
         background-color: gray;
@@ -34,14 +34,12 @@
         background: white;
         border-radius: 10px;
         margin-top: 30px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
       }
-      /* a.myAnim:hover {
+      div.myAnim:hover {
         animation: myAnim 1s ease 0s 1 normal forwards;
         box-shadow: 0 0 15px gray;
-      } */
-      a:hover {
-        background-color: yellow;
-      }
+
       @keyframes myAnim {
         0% {
           transform: scale(1);
@@ -69,7 +67,7 @@
         </option>
       </select>
 
-      <div v-for="item in mission">
+      <div v-for="item in mission" class="myAnim">
         <a
           v-if="item.status === null"
           :href="'/select_team/' + item.idmission"
